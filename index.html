@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>480 Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=Bebas+Neue&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --muted: #888888;
+      --mono: 'IBM Plex Mono', monospace;
+      --display: 'Bebas Neue', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+
+    html {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--body);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── FADE-IN ANIMATION ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .a1 { animation-delay: 0.05s; }
+    .a2 { animation-delay: 0.15s; }
+    .a3 { animation-delay: 0.28s; }
+    .a4 { animation-delay: 0.42s; }
+    .a5 { animation-delay: 0.58s; }
+    .a6 { animation-delay: 0.72s; }
+    .a7 { animation-delay: 0.86s; }
+
+    /* ─── HEADER ─── */
+    header {
+      padding-top: 5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .wordmark {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(7rem, 22vw, 13rem);
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--black);
+    }
+
+    .wordmark-sub {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ─── MAIN ─── */
+    main {
+      flex: 1;
+    }
+
+    /* ─── INTRO SECTION ─── */
+    .section-intro {
+      padding-top: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .section-intro p {
+      font-family: var(--body);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--black);
+      max-width: 60ch;
+    }
+
+    .section-intro p + p {
+      margin-top: 1.25rem;
+    }
+
+    /* ─── CASE STUDIES ─── */
+    .section-cases {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .case-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .case-list li {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .case-list a {
+      color: var(--black);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.45rem 0;
+      transition: color 0.15s ease;
+    }
+
+    .case-list a:hover {
+      color: var(--muted);
+    }
+
+    .case-list a:hover .case-arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    .case-num {
+      color: var(--muted);
+      font-weight: 300;
+      min-width: 3.5ch;
+    }
+
+    .case-arrow {
+      font-size: 0.75rem;
+      opacity: 0;
+      transform: translateX(0);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding-top: 2.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .ps {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .ps-prefix {
+      font-style: normal;
+      font-weight: 400;
+      color: #bbb;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 480px) {
+      header {
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
+      }
+      .section-intro p {
+        font-size: 0.97rem;
+      }
+      .case-list li {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <span class="wordmark animate a1">480</span>
+      <span class="wordmark-sub animate a2">Solutions</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Intro -->
+    <section class="section-intro">
+      <div class="container">
+        <p class="animate a3">
+          We are focused on building custom software to tackle niche business needs.
+          Applying tool appropriate solutions and prioritising in-house control when
+          solving problems.<br><br>
+          Because specific problems deserve specific solutions.
+        </p>
+        <p class="animate a3">
+          Based in Amsterdam. We are focused on the BeNeLux.
+        </p>
+        <p class="animate a3">
+          Call us, or better yet let's meet for a coffee. We want to meet business
+          owners and hear business problems and pain points.
+        </p>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="section-cases">
+      <div class="container">
+        <p class="section-label animate a4">Below are the linked projects that we have worked on</p>
+        <ul class="case-list animate a5">
+          <li>
+            <a href="https://worldsacross.com" target="_blank">
+              <span class="case-num">Case #0</span>
+              <span>worldsacross.com</span>
+              <span class="case-arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://docked.nl" target="_blank">
+              <span class="case-num">Case #1</span>
+              <span>docked.nl</span>
+              <span class="case-arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://birdy.nl" target="_blank">
+              <span class="case-num">Case #2</span>
+              <span>birdy.nl</span>
+              <span class="case-arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://khalidpackages.nl" target="_blank">
+              <span class="case-num">Case #3</span>
+              <span>khalidpackages.nl</span>
+              <span class="case-arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://vintagewish.nl" target="_blank">
+              <span class="case-num">Case #4</span>
+              <span>vintagewish.nl</span>
+              <span class="case-arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="ps animate a6">
+        <span class="ps-prefix">// </span>P.S. UI is a choice &nbsp;/&nbsp; WIP &nbsp;/&nbsp; maybe finished (06.03.2026).<br>
+        <span class="ps-prefix">// </span>Founder: Bob Verniers
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
